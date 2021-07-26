@@ -196,7 +196,7 @@ def todoview(view, shortcut, body, client, ack, say):
             if line5 is not None:
                 if len(line2) > 0:
                     for i in line2:
-                        client.chat_postMessage(channel=i,text=f"Bạn có công việc cần hoàn thành từ <@{user}>:\n:point_right: {line1}")
+                        client.chat_postMessage(channel=i,text=f"Bạn có công việc cần hoàn thành từ/You have a new task from <@{user}>:\n:point_right: {line1}")
                         sussy = id+"_"+i
                         everydayjob(line5["value"],hour,minute,i, yeet)
                         dictionary = {
@@ -254,7 +254,7 @@ def todoview(view, shortcut, body, client, ack, say):
 
             if len(line2) > 0:
                 for i in line2:
-                    client.chat_postMessage(channel=i,text=f"Bạn có công việc cần hoàn thành từ <@{user}>:\n:point_right: {line1}")
+                    client.chat_postMessage(channel=i,text=f"Bạn có công việc cần hoàn thành từ/You have a new task from <@{user}>:\n:point_right: {line1}")
                     sussy = id+"_"+i
                     sched.add_job(job, 'date' ,args=[i,yeet],run_date=duedate,id=sussy)
                     dictionary = {
@@ -304,7 +304,7 @@ def todoview(view, shortcut, body, client, ack, say):
     else:
         if len(line2) > 0:
             for i in line2:
-                client.chat_postMessage(channel=i,text=f"Bạn có công việc cần hoàn thành từ <@{user}>:\n:point_right: {line1}")
+                client.chat_postMessage(channel=i,text=f"Bạn có công việc cần hoàn thành từ/You have a new task from <@{user}>:\n:point_right: {line1}")
                 dictionary = {
                     i: [
                         todo
