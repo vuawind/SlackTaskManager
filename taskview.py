@@ -369,7 +369,7 @@ class viewx:
                     "text": "Submit"
                 },
                 "type": "modal",
-                "callback_id": "todo_view",
+                "callback_id": "todo_view_edit",
                 "blocks": [
                     {
                         "type": "input",
@@ -380,11 +380,6 @@ class viewx:
                             "action_id": "todo_input",
                             "initial_value": f"{self.value}"
                         },
-                        "hint": {
-                            "type": "plain_text",
-                            "text": ":grey_exclamation: Bạn chỉ có thể sửa nội dung/You can only edit the task description.",
-                            "emoji": True
-                        },
                         "label": {
                             "type": "plain_text",
                             "text": "ToDo/Việc cần làm",
@@ -392,22 +387,11 @@ class viewx:
                         }
                     },
                     {
-                        "type": "input",
-                        "optional": True,
+                        "type": "section",
                         "block_id": "block_b",
-                        "element": {
-                            "type": "multi_users_select",
-                            "placeholder": {
-                                "type": "plain_text",
-                                "text": "Select users",
-                                "emoji": True
-                            },
-                            "action_id": "user_input"
-                        },
-                        "label": {
-                            "type": "plain_text",
-                            "text": "Chọn người để giao việc/Assign to",
-                            "emoji": True
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": ":grey_exclamation: Bạn chỉ có thể sửa nội dung/You can only edit the task description."
                         }
                     }
                 ]
