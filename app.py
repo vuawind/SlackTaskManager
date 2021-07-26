@@ -106,6 +106,40 @@ def everydayjob(value,hour,minute,user, line):
     else:
         sched.add_job(job, 'cron', day_of_week = value, hour=hour,minute=minute,args=[user,line])
 
+@app.view("todo_view_edit")
+def waha(view, shortcut, body, client, ack, say):
+    user=body['user']['id']
+    see = viewx.BLOCK_HOME.copy()
+    linewhat = view["state"]["values"]["block_a"]["todo_input"]["value"]
+    yeti = f"*Bạn có việc cần phải hoàn thành/You have ongoing tasks:*\n:point_right: {linewhat}"
+    ack()
+    with open("tasks.json",'r+') as file:
+        blockid = queue[0]
+        file_data = json.load(file)
+        for i in range(0,len(file_data[user])):
+            tasks = file_data[user][i][1]['block_id']
+            sussy = blockid+"_"+user
+            try:
+                sched.modify_job(sussy,args=[user,yeti])
+            except:
+                print("sus")
+            if tasks == blockid:
+                file_data[user][i][1]['text']['text'] = f":red_circle:  {linewhat}"
+                lien = open("tasks.json",'w')
+                json.dump(file_data,lien,indent=4)
+        file_data[user].reverse()
+        for i in range(len(file_data[user])):
+            see.extend(file_data[user][i][1:])
+        queue.pop()
+    client.views_publish(
+        # Use the user ID associated with the event
+        user_id=user,
+        # Home tabs must be enabled in your app configuration
+        view={
+            "type": "home",
+            "blocks": see
+        }
+    )
 @app.view("todo_view")
 def todoview(view, shortcut, body, client, ack, say):
     line1 = view["state"]["values"]["block_a"]["todo_input"]["value"]
@@ -162,6 +196,7 @@ def todoview(view, shortcut, body, client, ack, say):
             if line5 is not None:
                 if len(line2) > 0:
                     for i in line2:
+                        client.chat_postMessage(channel=i,text=f"Bạn có công việc cần hoàn thành từ <@{user}>:\n:point_right: {line1}")
                         sussy = id+"_"+i
                         everydayjob(line5["value"],hour,minute,i, yeet)
                         dictionary = {
@@ -219,6 +254,7 @@ def todoview(view, shortcut, body, client, ack, say):
 
             if len(line2) > 0:
                 for i in line2:
+                    client.chat_postMessage(channel=i,text=f"Bạn có công việc cần hoàn thành từ <@{user}>:\n:point_right: {line1}")
                     sussy = id+"_"+i
                     sched.add_job(job, 'date' ,args=[i,yeet],run_date=duedate,id=sussy)
                     dictionary = {
@@ -266,30 +302,41 @@ def todoview(view, shortcut, body, client, ack, say):
             )
         #client.chat_postMessage(channel=body['user']['id'], text=f"{list_scheduled_messages(client,'1626256800','1626256800')['id']}")
     else:
-    #This part is for edit submissions
-        if len(view["blocks"][0]["element"]) == 5:
-            linewhat = view["state"]["values"]["block_a"]["todo_input"]["value"]
-            yeti = f"*Bạn có việc cần phải hoàn thành/You have ongoing tasks:*\n:point_right: {linewhat}"
+        if len(line2) > 0:
+            for i in line2:
+                client.chat_postMessage(channel=i,text=f"Bạn có công việc cần hoàn thành từ <@{user}>:\n:point_right: {line1}")
+                dictionary = {
+                    i: [
+                        todo
+                    ]
+                }
+                write_json(dictionary,i)
+                with open("tasks.json",'r+') as file:
+                    file_data = json.load(file)
+                    file_data[i].reverse()
+                    for j in range(len(file_data[i])):
+                        see.extend(file_data[i][j][1:])
+                client.views_publish(
+                    user_id=i,
+                    # Home tabs must be enabled in your app configuration
+                    view={
+                        "type": "home",
+                        "blocks": see
+                    }
+                )
+        else:
+            dictionary = {
+                user: [
+                    todo
+                ]
+            }
+            write_json(dictionary,user)
             with open("tasks.json",'r+') as file:
-                blockid = queue[0]
                 file_data = json.load(file)
-                for i in range(0,len(file_data[user])):
-                    tasks = file_data[user][i][1]['block_id']
-                    sussy = blockid+"_"+user
-                    try:
-                        sched.modify_job(sussy,args=[user,yeti])
-                    except:
-                        print("sus")
-                    if tasks == blockid:
-                        file_data[user][i][1]['text']['text'] = f":red_circle:  {linewhat}"
-                        lien = open("tasks.json",'w')
-                        json.dump(file_data,lien,indent=4)
                 file_data[user].reverse()
                 for i in range(len(file_data[user])):
                     see.extend(file_data[user][i][1:])
-                queue.pop()
             client.views_publish(
-                # Use the user ID associated with the event
                 user_id=user,
                 # Home tabs must be enabled in your app configuration
                 view={
@@ -297,48 +344,6 @@ def todoview(view, shortcut, body, client, ack, say):
                     "blocks": see
                 }
             )
-        else:
-            if len(line2) > 0:
-                for i in line2:
-                    dictionary = {
-                        i: [
-                            todo
-                        ]
-                    }
-                    write_json(dictionary,i)
-                    with open("tasks.json",'r+') as file:
-                        file_data = json.load(file)
-                        file_data[i].reverse()
-                        for j in range(len(file_data[i])):
-                            see.extend(file_data[i][j][1:])
-                    client.views_publish(
-                        user_id=i,
-                        # Home tabs must be enabled in your app configuration
-                        view={
-                            "type": "home",
-                            "blocks": see
-                        }
-                    )
-            else:
-                dictionary = {
-                    user: [
-                        todo
-                    ]
-                }
-                write_json(dictionary,user)
-                with open("tasks.json",'r+') as file:
-                    file_data = json.load(file)
-                    file_data[user].reverse()
-                    for i in range(len(file_data[user])):
-                        see.extend(file_data[user][i][1:])
-                client.views_publish(
-                    user_id=user,
-                    # Home tabs must be enabled in your app configuration
-                    view={
-                        "type": "home",
-                        "blocks": see
-                    }
-                )
 
 @app.action("overflow")
 def function(view, shortcut, body, client, ack, say,action):
