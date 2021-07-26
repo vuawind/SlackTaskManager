@@ -276,7 +276,10 @@ def todoview(view, shortcut, body, client, ack, say):
                 for i in range(0,len(file_data[user])):
                     tasks = file_data[user][i][1]['block_id']
                     sussy = blockid+"_"+user
-                    sched.modify_job(sussy,args=[user,yeti])
+                    try:
+                        sched.modify_job(sussy,args=[user,yeti])
+                    except:
+                        print("sus")
                     if tasks == blockid:
                         file_data[user][i][1]['text']['text'] = f":red_circle:  {linewhat}"
                         lien = open("tasks.json",'w')
@@ -355,7 +358,7 @@ def function(view, shortcut, body, client, ack, say,action):
                     finished1 = f":white_check_mark:{string[12:]}"
                     file_data[user][i][1]['text']['text'] = finished1
                     file_data[user][i][1]['accessory'] = viewx.ACCESSORY_NEW
-                    client.chat_postMessage(channel=file_data[user][i][0]["assign"], text=f"<@{user}> đã hoàn thành công việc/has completed the task:\n{string} \nvào lúc/on: {datetime.fromtimestamp(float(body['actions'][0]['action_ts']))}")
+                    client.chat_postMessage(channel=file_data[user][i][0]["assign"], text=f"<@{user}> đã hoàn thành công việc/has completed the task:\n{string} \nvào lúc/on: {datetime.fromtimestamp(int(float(body['actions'][0]['action_ts'])))}")
                     dictionary = {
                             user: [
                                 file_data[user][i]
