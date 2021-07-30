@@ -92,7 +92,7 @@ def todo1(user,id,note, nolie, due,recurr="no"):
         "elements": [
             {
                 "type": "mrkdwn",
-                "text": f"<@{user}> {nolie} \nHạn hoàn thành/Due on: {due}"
+                "text": f"<@{user}> {nolie} \nHạn hoàn thành/Due on: {due}\nID: {id}_{user}"
             }
         ]
     },
@@ -108,6 +108,15 @@ def everydayjob(value,hour,minute,user, line):
         sched.add_job(job, 'cron', day_of_week = "*", hour=hour,minute=minute,args=[user,line])
     else:
         sched.add_job(job, 'cron', day_of_week = value, hour=hour,minute=minute,args=[user,line])
+
+@app.command("/removesched")
+def getts(body, say, client, ack, command):
+    ack()
+    try:
+        sched.remove_job(command["text"])
+    except:
+        print("error")
+        client.chat_postMessage(channel=command['user_id'],text=f"Hãy thử lại sau/Try again later")
 
 @app.view("todo_view_edit")
 def waha(view, shortcut, body, client, ack, say):
@@ -179,7 +188,7 @@ def todoview(view, shortcut, body, client, ack, say):
         "elements": [
             {
                 "type": "mrkdwn",
-                "text": f"<@{user}> {nolie}"
+                "text": f"<@{user}> {nolie}\nID: {id}_{user}"
             }
         ]
     },
@@ -204,7 +213,7 @@ def todoview(view, shortcut, body, client, ack, say):
                 if line5 is not None:
                     if len(line2) > 0:
                         for i in line2:
-                            client.chat_postMessage(channel=i,text=f"Bạn có công việc cần hoàn thành từ/You have a new task from <@{user}>:\n:point_right: {line1}")
+                            client.chat_postMessage(channel=i,text=f"Bạn có công việc cần hoàn thành từ/You have a new task from <@{user}>:\n:point_right: {line1}\nID: {id}_{user}")
                             sussy = id+"_"+i
                             everydayjob(line5["value"],hour,minute,i, yeet)
                             dictionary = {
@@ -258,11 +267,11 @@ def todoview(view, shortcut, body, client, ack, say):
                 line4 = view["state"]["values"]["block_e"]["timepicker"]["selected_time"]
                 
                 duedate = scheduler(line3,line4)
-                yeet = f"*Bạn có việc cần phải hoàn thành/You have ongoing tasks:*\n:point_right: {line1}"
+                yeet = f"*Bạn có việc cần phải hoàn thành/You have ongoing tasks:*\n:point_right: {line1}\nID: {id}_{user}"
 
                 if len(line2) > 0:
                     for i in line2:
-                        client.chat_postMessage(channel=i,text=f"Bạn có công việc cần hoàn thành từ/You have a new task from <@{user}>:\n:point_right: {line1}")
+                        client.chat_postMessage(channel=i,text=f"Bạn có công việc cần hoàn thành từ/You have a new task from <@{user}>:\n:point_right: {line1}\nID: {id}_{user}")
                         sussy = id+"_"+i
                         sched.add_job(job, 'date' ,args=[i,yeet],run_date=duedate,id=sussy)
                         dictionary = {
@@ -312,7 +321,7 @@ def todoview(view, shortcut, body, client, ack, say):
         else:
             if len(line2) > 0:
                 for i in line2:
-                    client.chat_postMessage(channel=i,text=f"Bạn có công việc cần hoàn thành từ/You have a new task from <@{user}>:\n:point_right: {line1}")
+                    client.chat_postMessage(channel=i,text=f"Bạn có công việc cần hoàn thành từ/You have a new task from <@{user}>:\n:point_right: {line1}\nID: {id}_{user}")
                     dictionary = {
                         i: [
                             todo
@@ -374,7 +383,7 @@ def function(view, shortcut, body, client, ack, say,action):
                         finished1 = f":white_check_mark:{string[12:]}"
                         file_data[user][i][1]['text']['text'] = finished1
                         file_data[user][i][1]['accessory'] = viewx.ACCESSORY_NEW
-                        client.chat_postMessage(channel=file_data[user][i][0]["assign"], text=f"<@{user}> đã hoàn thành công việc/has completed the task:\n{string} \nvào lúc/on: {datetime.fromtimestamp(int(float(body['actions'][0]['action_ts'])))}")
+                        client.chat_postMessage(channel=file_data[user][i][0]["assign"], text=f"<@{user}> đã hoàn thành công việc/has completed the task:\n{string} \nvào lúc/on: {datetime.fromtimestamp(int(float(body['actions'][0]['action_ts'])))}\nID: {blockid}_{user}")
                         dictionary = {
                                 user: [
                                     file_data[user][i]
@@ -405,6 +414,8 @@ def function(view, shortcut, body, client, ack, say,action):
                             view=p1.viewthingedit())
                         queue.append(tasks)
                     if value == "value-2":
+                        string = file_data[user][i][1]['text']['text']
+                        client.chat_postMessage(channel=user, text=f"Bạn đã xoá công việc/You have deleted a task:\n{string} \nvào lúc/on: {datetime.fromtimestamp(int(float(body['actions'][0]['action_ts'])))}\nID: {blockid}_{user}")
                         welwel=blockid+"_"+user
                         try:
                             sched.remove_job(welwel)
