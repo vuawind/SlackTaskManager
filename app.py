@@ -112,11 +112,14 @@ def everydayjob(value,hour,minute,user, line):
 @app.command("/removesched")
 def getts(body, say, client, ack, command):
     ack()
-    try:
-        sched.remove_job(command["text"])
-    except:
-        print("error")
-        client.chat_postMessage(channel=command['user_id'],text=f"Hãy thử lại sau/Try again later")
+    if len(command) == 12:
+        client.chat_postMessage(channel=command['user_id'],text=f"Bạn phải thêm Job_ID/You have to add Job_ID:\n/removesched *Job_ID*")
+    else:
+        try:
+            sched.remove_job(command["text"])
+        except:
+            print("error")
+            client.chat_postMessage(channel=command['user_id'],text=f"Hãy thử lại sau/Try again later")
 
 @app.view("todo_view_edit")
 def waha(view, shortcut, body, client, ack, say):
