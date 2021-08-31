@@ -9,6 +9,7 @@ A simple advanced task manager for Slack. You can create and assign tasks to peo
 * Be able to create recurring tasks
 * Assign tasks to other people
 * Tasks can have due date
+* Edit tasks
 ## Usage
 First, look up how to build and run a Slack app, go through the basics of building a Slack app. A recommended guide is: [Guide to build Slack app](https://www.digitalocean.com/community/tutorials/how-to-build-a-slackbot-in-python-on-ubuntu-20-04)
 
