@@ -28,7 +28,7 @@ class viewx:
                         },
                         "label": {
                             "type": "plain_text",
-                            "text": "ToDo/Việc cần làm",
+                            "text": "ToDo",
                             "emoji": True
                         }
                     },
@@ -47,7 +47,7 @@ class viewx:
                         },
                         "label": {
                             "type": "plain_text",
-                            "text": "Chọn người để giao việc/Assign to",
+                            "text": "Assign to",
                             "emoji": True
                         }
                     },
@@ -58,7 +58,7 @@ class viewx:
                                 "type": "button",
                                 "text": {
                                     "type": "plain_text",
-                                    "text": "Thêm tính năng/More options",
+                                    "text": "More options",
                                     "emoji": True
                                 },
                                 "value": "button",
@@ -93,7 +93,7 @@ class viewx:
                         },
                         "label": {
                             "type": "plain_text",
-                            "text": "ToDo/Việc cần làm",
+                            "text": "ToDo",
                             "emoji": True
                         }
                     },
@@ -112,7 +112,7 @@ class viewx:
                         },
                         "label": {
                             "type": "plain_text",
-                            "text": "Chọn người để giao việc/Assign to",
+                            "text": "Assign to",
                             "emoji": True
                         }
                     },
@@ -125,7 +125,7 @@ class viewx:
                                     {
                                         "text": {
                                             "type": "mrkdwn",
-                                            "text": "*Nhắc nhở hằng ngày/Recurring tasks* (optional)"
+                                            "text": "*Recurring tasks* (optional)"
                                         },
                                         "value": "value-0"
                                     }
@@ -149,7 +149,7 @@ class viewx:
                         },
                         "label": {
                             "type": "plain_text",
-                            "text": "Chọn ngày/Datepicker",
+                            "text": "Datepicker",
                             "emoji": True
                         }
                     },
@@ -161,14 +161,14 @@ class viewx:
                             "type": "timepicker",
                             "placeholder": {
                                 "type": "plain_text",
-                                "text": "Có thể tự điền giờ/Type in time",
+                                "text": "Type in time",
                                 "emoji": True
                             },
                             "action_id": "timepicker"
                         },
                         "label": {
                             "type": "plain_text",
-                            "text": "Chọn giờ/Timepicker",
+                            "text": "Timepicker",
                             "emoji": True
                         }
                     }
@@ -199,7 +199,7 @@ class viewx:
                         },
                         "label": {
                             "type": "plain_text",
-                            "text": "ToDo/Việc cần làm",
+                            "text": "ToDo",
                             "emoji": True
                         }
                     },
@@ -218,7 +218,7 @@ class viewx:
                         },
                         "label": {
                             "type": "plain_text",
-                            "text": "Chọn người để giao việc/Assign to",
+                            "text": "Assign to",
                             "emoji": True
                         }
                     },
@@ -231,7 +231,7 @@ class viewx:
                                     {
                                         "text": {
                                             "type": "mrkdwn",
-                                            "text": "*Nhắc nhở hằng ngày/Recurring tasks* (optional)"
+                                            "text": "*Recurring tasks* (optional)"
                                         },
                                         "value": "value-0"
                                     }
@@ -240,7 +240,7 @@ class viewx:
                                     {
                                         "text": {
                                             "type": "mrkdwn",
-                                            "text": "*Nhắc nhở hằng ngày/Recurring tasks* (optional)"
+                                            "text": "*Recurring tasks* (optional)"
                                         },
                                         "value": "value-0"
                                     }
@@ -264,7 +264,7 @@ class viewx:
                                 {
                                     "text": {
                                         "type": "plain_text",
-                                        "text": "Hằng ngày/Everyday",
+                                        "text": "Everyday",
                                         "emoji": True
                                     },
                                     "value": "every"
@@ -272,7 +272,7 @@ class viewx:
                                 {
                                     "text": {
                                         "type": "plain_text",
-                                        "text": "Các thứ hai/Every monday",
+                                        "text": "Every monday",
                                         "emoji": True
                                     },
                                     "value": "mon"
@@ -280,7 +280,7 @@ class viewx:
                                 {
                                     "text": {
                                         "type": "plain_text",
-                                        "text": "Các thứ ba/Every tuesday",
+                                        "text": "Every tuesday",
                                         "emoji": True
                                     },
                                     "value": "tue"
@@ -288,7 +288,7 @@ class viewx:
                                 {
                                     "text": {
                                         "type": "plain_text",
-                                        "text": "Các thứ tư/Every wednesday",
+                                        "text": "Every wednesday",
                                         "emoji": True
                                     },
                                     "value": "wed"
@@ -296,7 +296,7 @@ class viewx:
                                 {
                                     "text": {
                                         "type": "plain_text",
-                                        "text": "Các thứ năm/Every thursday",
+                                        "text": "Every thursday",
                                         "emoji": True
                                     },
                                     "value": "thu"
@@ -304,7 +304,7 @@ class viewx:
                                 {
                                     "text": {
                                         "type": "plain_text",
-                                        "text": "Các thứ sáu/Every friday",
+                                        "text": "Every friday",
                                         "emoji": True
                                     },
                                     "value": "fri"
@@ -312,7 +312,7 @@ class viewx:
                                 {
                                     "text": {
                                         "type": "plain_text",
-                                        "text": "Các thứ bảy/Every saturday",
+                                        "text": "Every saturday",
                                         "emoji": True
                                     },
                                     "value": "sat"
@@ -320,7 +320,7 @@ class viewx:
                                 {
                                     "text": {
                                         "type": "plain_text",
-                                        "text": "Các chủ nhật/Every sunday",
+                                        "text": "Every sunday",
                                         "emoji": True
                                     },
                                     "value": "sun"
@@ -330,7 +330,7 @@ class viewx:
                         },
                         "label": {
                             "type": "plain_text",
-                            "text": "Chọn ngày/Datepicker",
+                            "text": "Datepicker",
                             "emoji": True
                         }
                     },
@@ -342,14 +342,14 @@ class viewx:
                             "type": "timepicker",
                             "placeholder": {
                                 "type": "plain_text",
-                                "text": "Có thể tự điền giờ/Type in time",
+                                "text": "Type in time",
                                 "emoji": True
                             },
                             "action_id": "timepicker"
                         },
                         "label": {
                             "type": "plain_text",
-                            "text": "Chọn giờ/Timepicker",
+                            "text": "Timepicker",
                             "emoji": True
                         }
                     }
@@ -382,7 +382,7 @@ class viewx:
                         },
                         "label": {
                             "type": "plain_text",
-                            "text": "ToDo/Việc cần làm",
+                            "text": "ToDo",
                             "emoji": True
                         }
                     },
@@ -391,7 +391,7 @@ class viewx:
                         "block_id": "block_b",
                         "text": {
                             "type": "mrkdwn",
-                            "text": ":grey_exclamation: Bạn chỉ có thể sửa nội dung/You can only edit the task description."
+                            "text": ":grey_exclamation: You can only edit the task description."
                         }
                     }
                 ]
@@ -408,7 +408,7 @@ class viewx:
 					"type": "button",
 					"text": {
 						"type": "plain_text",
-						"text": "Tạo công việc/Create task",
+						"text": "Create task",
 						"emoji": True
 					},
 					"value": "click_me_123",
@@ -429,7 +429,7 @@ class viewx:
                     "initial_option": {
                         "text": {
                             "type": "plain_text",
-                            "text": "Việc đang làm/Ongoing tasks",
+                            "text": "Ongoing tasks",
                             "emoji": True
                         },
                         "value": "value-0"
@@ -438,7 +438,7 @@ class viewx:
                         {
                             "text": {
                                 "type": "plain_text",
-                                "text": "Việc đang làm/Ongoing tasks",
+                                "text": "Ongoing tasks",
                                 "emoji": True
                             },
                             "value": "value-0"
@@ -446,7 +446,7 @@ class viewx:
                         {
                             "text": {
                                 "type": "plain_text",
-                                "text": "Việc đã hoàn thành/Completed tasks",
+                                "text": "Completed tasks",
                                 "emoji": True
                             },
                             "value": "value-1"
@@ -469,7 +469,7 @@ class viewx:
 					"type": "button",
 					"text": {
 						"type": "plain_text",
-						"text": "Tạo công việc/Create task",
+						"text": "Create task",
 						"emoji": True
 					},
 					"value": "click_me_123",
@@ -490,7 +490,7 @@ class viewx:
                     "initial_option": {
                         "text": {
                             "type": "plain_text",
-                            "text": "Việc đã hoàn thành/Completed tasks",
+                            "text": "Completed tasks",
                             "emoji": True
                         },
                         "value": "value-1"
@@ -499,7 +499,7 @@ class viewx:
                         {
                             "text": {
                                 "type": "plain_text",
-                                "text": "Việc đang làm/Ongoing tasks",
+                                "text": "Ongoing tasks",
                                 "emoji": True
                             },
                             "value": "value-0"
@@ -507,7 +507,7 @@ class viewx:
                         {
                             "text": {
                                 "type": "plain_text",
-                                "text": "Việc đã hoàn thành/Completed tasks",
+                                "text": "Completed tasks",
                                 "emoji": True
                             },
                             "value": "value-1"
@@ -528,7 +528,7 @@ class viewx:
             {
                 "text": {
                     "type": "plain_text",
-                    "text": ":white_check_mark: Đã hoàn thành/Completed",
+                    "text": ":white_check_mark: Completed",
                     "emoji": True
                 },
                 "value": "value-0"
@@ -536,7 +536,7 @@ class viewx:
             {
                 "text": {
                     "type": "plain_text",
-                    "text": ":pencil2: Sửa/Edit",
+                    "text": ":pencil2: Edit",
                     "emoji": True
                 },
                 "value": "value-1"
@@ -544,7 +544,7 @@ class viewx:
             {
                 "text": {
                     "type": "plain_text",
-                    "text": ":x: Xóa/Delete",
+                    "text": ":x: Delete",
                     "emoji": True
                 },
                 "value": "value-2"
@@ -559,7 +559,7 @@ class viewx:
             {
                 "text": {
                     "type": "plain_text",
-                    "text": ":repeat: Chưa hoàn thành/Incomplete",
+                    "text": ":repeat: Incomplete",
                     "emoji": True
                 },
                 "value": "value-3"
@@ -567,7 +567,7 @@ class viewx:
             {
                 "text": {
                     "type": "plain_text",
-                    "text": ":x: Xóa/Delete",
+                    "text": ":x: Delete",
                     "emoji": True
                 },
                 "value": "value-4"
