@@ -1,5 +1,6 @@
 # SlackTaskManager
 A simple task manager for Slack. You can create and assign tasks to people in your workspace.
+
 ![Alt Text](https://media.giphy.com/media/HivCT1sbv3JMqZ1gKM/giphy.gif?cid=790b7611f8ab8e789492c327a7cdf19f6fa243740708d4e9&rid=giphy.gif&ct=g)
 ## Installation
     pip install apscheduler
