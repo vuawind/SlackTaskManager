@@ -1,4 +1,4 @@
-# TelioTask
+# SlackTaskManager
 A simple task manager for Slack. You can create and assign tasks to people in your workspace.
 ## Installation
     pip install apscheduler
